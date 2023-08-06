@@ -1,1 +1,1 @@
-# Convert numbers to kurdish sorani words
+# A Dart package to convert numbers to Sorani Kurdish words
