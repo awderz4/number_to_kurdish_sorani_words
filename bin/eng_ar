@@ -1,0 +1,152 @@
+class NumberToWordsConverter {
+  static const List<String> units = [
+    'Zero',
+    'One',
+    'Two',
+    'Three',
+    'Four',
+    'Five',
+    'Six',
+    'Seven',
+    'Eight',
+    'Nine',
+    'Ten',
+    'Eleven',
+    'Twelve',
+    'Thirteen',
+    'Fourteen',
+    'Fifteen',
+    'Sixteen',
+    'Seventeen',
+    'Eighteen',
+    'Nineteen'
+  ];
+
+  static const List<String> tens = [
+    '',
+    '',
+    'Twenty',
+    'Thirty',
+    'Forty',
+    'Fifty',
+    'Sixty',
+    'Seventy',
+    'Eighty',
+    'Ninety'
+  ];
+
+  static const List<String> thousands = ['', 'Thousand', 'Million'];
+
+  static String convert(int number) {
+    if (number == 0) return units[0];
+
+    String result = '';
+    int groupIndex = 0;
+
+    while (number > 0) {
+      if (number % 1000 != 0) {
+        result =
+            '${_convertHundreds(number % 1000)}${thousands[groupIndex]} $result';
+      }
+      number ~/= 1000;
+      groupIndex++;
+    }
+
+    return result.trim();
+  }
+
+  static String _convertHundreds(int number) {
+    if (number == 0) return '';
+
+    if (number < 20) {
+      return '${units[number]} ';
+    } else if (number < 100) {
+      return '${tens[number ~/ 10]} ${_convertHundreds(number % 10)}';
+    } else {
+      return '${units[number ~/ 100]} Hundred ${_convertHundreds(number % 100)}';
+    }
+  }
+}
+
+class NumberToArabicWordsConverter {
+  static const List<String> units = [
+    'صفر',
+    'واحد',
+    'اثنان',
+    'ثلاثة',
+    'أربعة',
+    'خمسة',
+    'ستة',
+    'سبعة',
+    'ثمانية',
+    'تسعة',
+    'عشرة',
+    'أحد عشر',
+    'اثنا عشر',
+    'ثلاثة عشر',
+    'أربعة عشر',
+    'خمسة عشر',
+    'ستة عشر',
+    'سبعة عشر',
+    'ثمانية عشر',
+    'تسعة عشر'
+  ];
+
+  static const List<String> tens = [
+    '',
+    '',
+    'عشرون',
+    'ثلاثون',
+    'أربعون',
+    'خمسون',
+    'ستون',
+    'سبعون',
+    'ثمانون',
+    'تسعون'
+  ];
+
+  static const List<String> hundreds = [
+    '',
+    'مائة',
+    'مئتان',
+    'ثلاثمائة',
+    'أربعمائة',
+    'خمسمائة',
+    'ستمائة',
+    'سبعمائة',
+    'ثمانمائة',
+    'تسعمائة'
+  ];
+
+  static const List<String> thousands = ['', 'ألف', 'مليون'];
+
+  static String convert(int number) {
+    if (number == 0) return units[0];
+
+    String result = '';
+    int groupIndex = 0;
+
+    while (number > 0) {
+      if (number % 1000 != 0) {
+        result =
+            '${_convertHundreds(number % 1000)}${thousands[groupIndex]} و$result';
+      }
+      number ~/= 1000;
+      groupIndex++;
+    }
+
+    return result.trim();
+  }
+
+  static String _convertHundreds(int number) {
+    if (number == 0) return '';
+
+    if (number < 20) {
+      return '${units[number]} ';
+    } else if (number < 100) {
+      return '${tens[number ~/ 10]} و${_convertHundreds(number % 10)}';
+    } else {
+      return '${hundreds[number ~/ 100]} و${_convertHundreds(number % 100)}';
+    }
+  }
+}

@@ -1,0 +1,13 @@
+name: number_to_kurdish_sorani_words_converter
+version: 1.0.0
+description: A Dart package to convert numbers to Sorani Kurdish words
+homepage: https://github.com/yourusername/sorani_kurdish_words_converter
+
+environment:
+  sdk: ^3.0.6
+
+dependencies:
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
